@@ -1,0 +1,269 @@
+/* Reseteo básico y fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%); /* Degradado suave */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+    overflow: hidden; /* Para que el confeti no cause scroll */
+}
+
+/* Contenedor principal del juego */
+.game-container {
+    width: 90%;
+    max-width: 650px; /* Un poco más ancho */
+    background-color: #FFFFFF; /* Blanco */
+    border-radius: 20px; /* Bordes más redondeados */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+    padding: 35px; /* Más padding */
+    overflow: hidden;
+    position: relative; /* Para el confeti */
+    animation: fadeIn 0.8s ease-out; /* Animación de entrada */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Manejo de pantallas (activa / inactiva) */
+.screen {
+    display: none;
+    text-align: center;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.screen.active {
+    display: block;
+}
+
+/* --- Pantalla de Inicio --- */
+#start-screen h1 {
+    color: #3f51b5; /* Azul índigo */
+    margin-bottom: 25px;
+    font-size: 2.5em;
+    font-weight: 700;
+}
+
+.instructions {
+    font-size: 1.15em;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    color: #555;
+}
+
+/* --- Botones --- */
+.btn {
+    background: linear-gradient(45deg, #6a11cb 0%, #2575fc 100%); /* Degradado para botón */
+    color: #FFFFFF;
+    border: none;
+    padding: 16px 35px;
+    font-size: 1.3em;
+    font-weight: 600;
+    border-radius: 30px; /* Más redondeado */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    letter-spacing: 1px;
+}
+
+.btn:hover {
+    transform: translateY(-3px); /* Efecto 3D al pasar el mouse */
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* --- Pantalla de Juego --- */
+.game-hud {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.4em;
+    margin-bottom: 25px;
+    padding: 10px 0;
+    border-bottom: 2px dashed #EEE;
+    color: #4CAF50; /* Verde para HUD */
+    font-weight: 600;
+}
+
+.game-hud i {
+    margin-left: 8px;
+    color: #FFC107; /* Amarillo para iconos */
+}
+
+#timer strong {
+    color: #FF5722; /* Naranja para el tiempo */
+}
+
+#score strong {
+    color: #2196F3; /* Azul para puntos */
+}
+
+
+#question-container {
+    background-color: #E0F7FA; /* Azul claro muy suave */
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    border: 2px solid #00BCD4; /* Azul cian */
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+#question-container p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+#function-text {
+    font-size: 2.8em; /* Más grande */
+    color: #3f51b5; /* Azul índigo */
+    font-weight: 700;
+}
+
+#options-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px; /* Más espacio */
+    margin-bottom: 20px;
+}
+
+.option-btn {
+    background-color: #F8F8F8; /* Gris muy claro */
+    border: 2px solid #DEDEDE;
+    padding: 22px; /* Más padding */
+    font-size: 1.4em;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-weight: 500;
+}
+
+.option-btn:hover:not(:disabled) {
+    background-color: #EFEFEF;
+    border-color: #BBB;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Retroalimentación --- */
+.option-btn.correct {
+    background-color: #4CAF50; /* Verde */
+    color: white;
+    border-color: #388E3C;
+    animation: pulseCorrect 0.5s;
+}
+
+.option-btn.incorrect {
+    background-color: #F44336; /* Rojo */
+    color: white;
+    border-color: #D32F2F;
+    animation: shakeIncorrect 0.5s;
+}
+
+/* Animaciones de retroalimentación */
+@keyframes pulseCorrect {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes shakeIncorrect {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-5px); }
+    40%, 80% { transform: translateX(5px); }
+}
+
+
+/* Deshabilitar botones después de responder */
+.option-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+#feedback {
+    margin-top: 20px;
+    font-size: 1.6em; /* Más grande */
+    font-weight: 700;
+    height: 40px; /* Más espacio para el texto */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Pantalla Final --- */
+#end-screen h1 {
+    color: #F44336; /* Rojo */
+    margin-bottom: 20px;
+    font-size: 2.8em;
+    font-weight: 700;
+}
+
+#end-screen p {
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+#final-score {
+    font-size: 4.5em; /* Aún más grande */
+    color: #3f51b5; /* Azul índigo */
+    margin: 20px 0;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#encouragement-text {
+    font-size: 1.4em;
+    color: #4CAF50; /* Verde */
+    font-style: italic;
+    margin-bottom: 30px;
+    min-height: 2em; /* Para asegurar el espacio */
+}
+
+
+/* --- Confeti (Elementos que caen) --- */
+#confetti-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Permite interactuar con los elementos debajo */
+    overflow: hidden;
+    z-index: 100;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #FFD700; /* Oro */
+    border-radius: 50%;
+    opacity: 0;
+    animation: confettiFall 3s forwards;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.confetti.blue { background-color: #2196F3; } /* Azul */
+.confetti.pink { background-color: #FF69B4; } /* Rosa */
+.confetti.green { background-color: #4CAF50; } /* Verde */
+
+@keyframes confettiFall {
+    0% {
+        transform: translate(0, -100px) rotateZ(0deg);
+        opacity: 0;
+    }
+    10% { opacity: 1; }
+    100% {
+        transform: translate(var(--x), var(--y)) rotateZ(var(--deg));
+        opacity: 0;
+    }
+}

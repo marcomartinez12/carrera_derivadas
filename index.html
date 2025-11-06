@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrera de Derivadas</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="game-container">
+
+        <div id="start-screen" class="screen active">
+            <h1>🚀 ¡Carrera de Derivadas!</h1>
+            <p class="instructions">
+                ¡Bienvenido! Tienes <strong>50 segundos</strong> para resolver tantas derivadas como puedas.
+                <br><br>
+                Selecciona la derivada correcta f'(x) para cada función f(x) que aparezca.
+                <br>
+                ¡Cada respuesta correcta te da un punto!
+            </p>
+            <button id="start-button" class="btn">¡Iniciar Juego!</button>
+        </div>
+
+        <div id="game-screen" class="screen">
+            <div class="game-hud">
+                <div id="timer">Tiempo: <strong>50</strong> <i class="far fa-clock"></i></div>
+                <div id="score">Puntos: <strong>0</strong> <i class="fas fa-star"></i></div>
+            </div>
+            <div id="question-container">
+                <p>Deriva la siguiente función:</p>
+                <h2 id="function-text">f(x) = 3x²</h2>
+            </div>
+            <div id="options-container">
+                </div>
+            <div id="feedback"></div>
+        </div>
+
+        <div id="end-screen" class="screen">
+            <h1>¡Tiempo! ⏳</h1>
+            <p id="final-message-text">Tu puntuación final es:</p>
+            <h2 id="final-score">0</h2>
+            <p id="encouragement-text"></p> <button id="restart-button" class="btn">Jugar de Nuevo</button>
+        </div>
+
+    </div>
+
+    <div id="confetti-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
