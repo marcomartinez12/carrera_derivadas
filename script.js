@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
         { f: "f(x) = x + 6", options: ["1", "0", "x", "6"], correct: 0 },
         { f: "f(x) = 5x³", options: ["15x²", "5x²", "15x", "3x²"], correct: 0 },
         { f: "f(x) = 100", options: ["100", "0", "1", "x"], correct: 1 },
-        { f: "f(x) = x⁵ + 2", options: ["5x⁴", "x⁴ + 2", "5x⁴ + 2", "5x⁴"], correct: 3 },
+        { f: "f(x) = x⁵ + 2", options: ["5x⁴", "x⁴ + 2", "5x⁴ + 2", "x⁵"], correct: 0 },
         { f: "f(x) = 3x² + 2x", options: ["6x + 2x", "3x + 2", "6x + 2", "6x"], correct: 2 },
         { f: "f(x) = 8", options: ["8", "0", "1", "x"], correct: 1 },
         // Añadimos algunas más para mayor variedad
